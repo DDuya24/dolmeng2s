@@ -1,0 +1,227 @@
+* {
+    margin: 0;  
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+    padding: 0;  
+    background-color: #121212; 
+    color: #e0e0e0;
+    text-align: left; 
+    transition: margin-right 0.3s; /* 사이드바가 열릴 때 마진 애니메이션 */
+}
+
+.title-container {
+    margin-bottom: 20px;
+    background-color: #121212; 
+    padding: 10px 0; 
+}
+
+.title {
+    font-size: 24px;
+    color: #ffffff;
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+.title:hover {
+    text-decoration: none; /* 마우스 오버 시에도 밑줄 제거 */
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #aaa;
+    margin-top: 5px;
+    text-align: center; 
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px; 
+    background-color: #121212; 
+    padding: 10px 0; 
+}
+
+.search-bar input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #444;
+    border-radius: 5px; 
+    background-color: #333; 
+    color: #e0e0e0; 
+    width: 400px; 
+    transition: border-color 0.3s ease, transform 0.3s ease; /* 애니메이션 효과 */
+}
+
+.search-bar input:focus {
+    border-color: rgb(75, 75, 221); /* 포커스 시 애니메이션 효과 */
+    outline: none; /* 아웃라인 제거 */
+    transform: scale(1.05); /* 포커스 시 살짝 커지기 */
+}
+
+.search-bar input:hover {
+    transform: scale(1.05); /* 마우스 오버 시 살짝 커지기 */
+}
+
+.search-bar button {
+    padding: 10px 15px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px; 
+    background-color: #555; 
+    color: #ffffff; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, transform 0.3s ease; /* 애니메이션 효과 */
+}
+
+.search-bar button:hover {
+    background-color: #777; 
+    transform: scale(1.05); /* 마우스 오버 시 살짝 커지기 */
+}
+
+/* 결과 영역 스타일 */
+.container {
+    margin-top: 40px; 
+    padding: 20px; 
+    background-color: #222; 
+    height: calc(100vh - 120px); 
+    border-radius: 10px; /* 둥근 모서리 추가 */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* 그림자 추가 */
+}
+
+.results {
+    margin-top: 0; 
+    padding: 20px; 
+}
+
+/* 카드 스타일 */
+.result-card {
+    position: relative; /* 위치 설정 */
+    background-color: #333; /* 카드 배경색 */
+    border-radius: 8px; 
+    padding: 15px; 
+    margin: 10px 0; /* 카드 간격 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 애니메이션 효과 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* 카드 그림자 */
+}
+
+.result-card:hover {
+    transform: translateY(-5px); /* 마우스 오버 시 상승 효과 */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* 그림자 강조 */
+}
+
+/* 출력 스타일 */
+.part-of-speech {
+    font-size: 20px; 
+    color: rgb(75, 75, 221); 
+    font-weight: bold; 
+    margin-top: 10px; 
+}
+
+.search-term {
+    font-size: 18px; 
+    color: #e0e0e0; 
+}
+
+.translation {
+    font-size: 16px; 
+    color: #e0e0e0; 
+}
+
+/* 복사 버튼 스타일 */
+.copy-button {
+    position: absolute; /* 카드 내에서 위치 조정 */
+    top: 10px; /* 카드 상단 여백 */
+    right: 10px; /* 카드 우측 여백 */
+    background: none; /* 버튼 배경 없애기 */
+    border: none; /* 버튼 테두리 없애기 */
+    color: #e0e0e0; /* 아이콘 색상 */
+    cursor: pointer; /* 마우스 포인터 변경 */
+    font-size: 16px; /* 아이콘 크기 조정 */
+}
+
+.copy-button:hover {
+    color: rgb(75, 75, 221); /* 마우스 오버 시 색상 변경 */
+}
+
+/* 사이드바 스타일 */
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    right: -250px; /* 사이드바 숨김 상태 */
+    background-color: #333;
+    overflow-x: hidden;
+    transition: 0.3s; /* 애니메이션 */
+    padding-top: 60px;
+    z-index: 1000;
+}
+
+.sidebar.open {
+    right: 0; /* 사이드바 열림 상태 */
+}
+
+.sidebar .close-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #e0e0e0;
+}
+
+.sidebar .nav-item {
+    cursor: pointer;
+    color: #e0e0e0;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.sidebar .nav-item:hover {
+    background-color: #444;
+    color: #ffffff;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .title {
+        font-size: 20px;
+    }
+    .search-bar input {
+        font-size: 14px;
+    }
+    .search-bar img {
+        width: 20px;
+        height: 20px;
+    }
+    .results, .search-history, .link-container {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 18px;
+    }
+    .search-bar input {
+        font-size: 12px;
+    }
+    .search-bar img {
+        width: 18px;
+        height: 18px;
+    }
+    .results, .search-history, .link-container {
+        padding: 10px;
+    }
+    .search-history button {
+        font-size: 18px; /* x 버튼 크기 조정 */
+    }
+}

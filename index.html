@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>돌멩어 사전</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="script.js" type="module" defer></script>
+</head>
+<body>
+    <button class="hamburger" onclick="toggleSidebar()" style="position: absolute; top: 20px; right: 20px; background: none; border: none; cursor: pointer; color: #e0e0e0; font-size: 24px;">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">×</button>
+        <p class="nav-item" onclick="showSection('search')">사전</p>
+        <p class="nav-item" onclick="showSection('grammar')">문장 작성법</p>
+        <p class="nav-item" onclick="window.open('https://open.kakao.com/o/gtCFNCjg', '_blank');">돌멩방</p>
+        <p class="nav-item" onclick="window.open('https://open.kakao.com/o/sAR1BnHg', '_blank');">문의</p>
+        <p class="nav-item" onclick="window.open('https://dduya24.github.io/dolmengP', '_blank');">돌멩어 능력 평가</p>
+        <p class="nav-item" onclick="downloadApp()">전용 앱 다운로드</p>
+    </div>
+    
+    <div class="title-container">
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-search" style="font-size: 24px; margin-right: 8px;"></i>
+            <a href="javascript:void(0);" class="title" onclick="location.reload();">돌멩어 사전</a>
+        </div>
+        <div class="subtitle">Copyright 2024. DDuya24 All rights reserved.</div>
+    </div>
+    
+    <div class="search-bar">
+        <input type="text" id="main-search" placeholder="단어를 검색하세요." onkeyup="handleKeyUp(event)">
+        <button onclick="search()">
+            <i class="fas fa-search" style="font-size: 16px;"></i>
+        </button>
+    </div>
+
+    <div class="container">
+        <div id="output" class="results"></div>
+    </div>
+
+</body>
+</html>
